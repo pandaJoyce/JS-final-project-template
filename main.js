@@ -7,7 +7,7 @@ var enemyImg = document.createElement("img");
 enemyImg.src = "images/slime.gif";
 
 var enemy = {
-  x:0
+  x:0,
   y:0
 };
 
