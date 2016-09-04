@@ -13,7 +13,7 @@ var enemy = {
 
 function draw(){
 ctx.drawImage(bgImg,0,0);
-ctx.drawImage(enemy.x,enemy.y);
+ctx.drawImage(enemyImg,enemy.x,enemy.y);
 }
 
 setTimeout(draw,1000);
