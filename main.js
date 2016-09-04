@@ -16,4 +16,4 @@ ctx.drawImage(bgImg,0,0);
 ctx.drawImage(enemyImg,enemy.x,enemy.y);
 }
 
-setInterval(draw,40);
+setInterval(draw,16);
