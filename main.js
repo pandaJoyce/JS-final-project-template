@@ -23,12 +23,24 @@ $("canvas").on("mousemove",function(event){
   cursor.y = event.offsetY;
   
 })
-
+var isBuilding = false;
+$("canvas"),on("click",function(event){
+  if(cursor.x >= 640-32 && cursor.y >= 480-32){
+    if (isBuilding = true){
+      isBuilding = false;
+    }else{
+      isBuilding = true;
+    }
+  
+  }
+})
 function draw(){
 ctx.drawImage(bgImg,0,0);
 ctx.drawImage(enemyImg,enemy.x,enemy.y);
 ctx.drawImage(towbtnImg,640-32,480-32,32,32);
-ctx.drawImage(towImg,cursor.x,cursor.y);
+  if (isBuilding = true){
+    ctx.drawImage(towImg,cursor.x,cursor.y);
+  }  
 }
 
 setInterval(draw,16);
