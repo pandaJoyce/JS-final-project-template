@@ -21,6 +21,7 @@ var cursor = {x:0,y:0};
 $("canvas").on("mousemove",function(event){
   cursor.x = event.offsetX;
   cursor.y = event.offsetY;
+  console.log(event.offsetX);
   
 })
 
