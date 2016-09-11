@@ -11,13 +11,13 @@ var enemy = {
   y:0
 };
 
-var tow-btnImg = document.createElement("img");
+var towbtnImg = document.createElement("img");
 tow-btnImg.src = "images/tower-btn.png";
 
 function draw(){
 ctx.drawImage(bgImg,0,0);
 ctx.drawImage(enemyImg,enemy.x,enemy.y);
-ctx.drawImage(tow-btnImg,608,448);
+ctx.drawImage(towbtnImg,608,448);
 }
 
 setInterval(draw,16);
