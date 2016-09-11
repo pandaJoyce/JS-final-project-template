@@ -18,7 +18,7 @@ var towImg = document.creatElement("img")
 towImg.src = "images/tower.png";
 var cursor = {x:0,y:0};
 
-$("canvas").mousemove(function(event){
+$("canvas").on("mousemove",function(event){
   cursor.x = event.offsetX;
   cursor.y = event.offsetY;
   
