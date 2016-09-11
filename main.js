@@ -24,6 +24,7 @@ $("canvas").on("mousemove",function(event){
   
 })
 var isBuilding = false;
+var tower = {x:0,y:0};
 $("canvas").on("click",function(event){
   if(cursor.x >= 640-32 && cursor.y >= 480-32){
     if (isBuilding == true){
@@ -31,15 +32,19 @@ $("canvas").on("click",function(event){
     }else{
       isBuilding = true;
     }
-  
+    
+  }else if(isBuilding == true){
+    tower.x = cursor.x;
+    tower.y = cursor.y;
   }
+  
 })
 function draw(){
 ctx.drawImage(bgImg,0,0);
 ctx.drawImage(enemyImg,enemy.x,enemy.y);
 ctx.drawImage(towbtnImg,640-32,480-32,32,32);
   if (isBuilding == true){
-    ctx.drawImage(towImg,cursor.x,cursor.y);
+    ctx.drawImage(towImg,tower.x,tower.y);
   }  
 }
 
