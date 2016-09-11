@@ -12,7 +12,7 @@ var enemy = {
 };
 
 var towbtnImg = document.createElement("img");
-tow-btnImg.src = "images/tower-btn.png";
+towbtnImg.src = "images/tower-btn.png";
 
 function draw(){
 ctx.drawImage(bgImg,0,0);
