@@ -17,7 +17,7 @@ towbtnImg.src = "images/tower-btn.png";
 function draw(){
 ctx.drawImage(bgImg,0,0);
 ctx.drawImage(enemyImg,enemy.x,enemy.y);
-ctx.drawImage(towbtnImg,608,448,32,32);
+ctx.drawImage(towbtnImg,640-32,480-32,32,32);
 }
 
 setInterval(draw,16);
