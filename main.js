@@ -24,7 +24,7 @@ $("canvas").on("mousemove",function(event){
   
 })
 var isBuilding = false;
-$("canvas"),on("click",function(event){
+$("canvas").on("click",function(event){
   if(cursor.x >= 640-32 && cursor.y >= 480-32){
     if (isBuilding = true){
       isBuilding = false;
