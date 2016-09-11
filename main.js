@@ -43,8 +43,9 @@ function draw(){
 ctx.drawImage(bgImg,0,0);
 ctx.drawImage(enemyImg,enemy.x,enemy.y);
 ctx.drawImage(towbtnImg,640-32,480-32,32,32);
+ctx.drawImage(towImg,tower.x,tower.y);
   if (isBuilding == true){
-    ctx.drawImage(towImg,tower.x,tower.y);
+    ctx.drawImage(towImg,cursor.x,cursor.y);
   }  
 }
 
