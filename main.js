@@ -16,10 +16,13 @@ towbtnImg.src = "images/tower-btn.png";
 
 var towImg = document.creatElement("img")
 towImg.src = "images/tower.png";
-$("canvas").mousemove(mouse(){
-  var cursor = {x:event.offsetX,y:event.offsetY};
-})
+var cursor = {x:0,y:0};
 
+$("canvas").mousemove(function(event){
+  cursor.x = event.offsetX;
+  cursor.y = event.offsetY;
+  
+})
 
 function draw(){
 ctx.drawImage(bgImg,0,0);
