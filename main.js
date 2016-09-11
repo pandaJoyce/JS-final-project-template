@@ -19,8 +19,8 @@ towImg.src = "images/tower.png";
 var cursor = {x:0,y:0};
 
 $("canvas").on("mousemove",function(event){
-  cursor.x = event.offsetX;
-  cursor.y = event.offsetY;
+  cursor.x = event.offsetX - (event.offsetX%32);
+  cursor.y = event.offsetY - (event.offsetY%32);
   
 })
 var isBuilding = false;
