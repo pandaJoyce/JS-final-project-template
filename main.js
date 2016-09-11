@@ -14,7 +14,7 @@ var enemy = {
 var towbtnImg = document.createElement("img");
 towbtnImg.src = "images/tower-btn.png";
 
-var towImg = document.creatElement("img")
+var towImg = document.creatElement("img");
 towImg.src = "images/tower.png";
 var cursor = {x:0,y:0};
 
