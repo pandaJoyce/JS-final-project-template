@@ -58,7 +58,7 @@ ctx.drawImage(towImg,tower.x,tower.y);
   if (isBuilding == true){
     ctx.drawImage(towImg,cursor.x,cursor.y);
   }
-enemy.move;
+enemy.move();
 }
 
 setInterval(draw,1000/FPS);
