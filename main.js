@@ -7,8 +7,8 @@ var enemyImg = document.createElement("img");
 enemyImg.src = "images/slime.gif";
 
 var enemy = {
-  x:0,
-  y:0
+  x:96,
+  y:448
 };
 
 var towbtnImg = document.createElement("img");
