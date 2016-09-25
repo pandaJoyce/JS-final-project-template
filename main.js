@@ -3,12 +3,16 @@ bgImg.src = "images/map.png";
 var canvas = document.getElementById("game-canvas");
 var ctx = canvas.getContext("2d");
 
+var FPS = 60;
+
 var enemyImg = document.createElement("img");
 enemyImg.src = "images/slime.gif";
 
 var enemy = {
   x:96,
-  y:448
+  y:448,
+  speedX:0,
+  speedY:-64
 };
 
 var towbtnImg = document.createElement("img");
@@ -49,4 +53,4 @@ ctx.drawImage(towImg,tower.x,tower.y);
   }  
 }
 
-setInterval(draw,16);
+setInterval(draw,1000/FPS);
