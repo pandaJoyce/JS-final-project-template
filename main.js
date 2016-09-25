@@ -12,8 +12,15 @@ var enemy = {
   x:96,
   y:448,
   speedX:0,
-  speedY:-64
+  speedY:-64,
+  move:function(){
+  this.x = (this.x + this.speedX)/FPS;
+  this.y = (this.y + this.speedY)/FPS;
+}
 };
+
+
+
 
 var towbtnImg = document.createElement("img");
 towbtnImg.src = "images/tower-btn.png";
@@ -50,7 +57,8 @@ ctx.drawImage(towbtnImg,640-32,480-32,32,32);
 ctx.drawImage(towImg,tower.x,tower.y);
   if (isBuilding == true){
     ctx.drawImage(towImg,cursor.x,cursor.y);
-  }  
+  }
+enemy.move;
 }
 
 setInterval(draw,1000/FPS);
