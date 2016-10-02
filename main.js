@@ -8,19 +8,54 @@ var FPS = 60;
 var enemyImg = document.createElement("img");
 enemyImg.src = "images/slime.gif";
 
+var enemyPath = [
+  {x:96,y:64},
+  {x:384,y:64},
+  {x:384,y:192},
+  {x:224,y:192},
+  {x:224,y:320},
+  {x:544,y:320}
+];
+
 var enemy = {
   x:96,
   y:448,
   speedX:0,
   speedY:-64,
+  pathDes:0,
   move:function(){
-  this.x = this.x + this.speedX/FPS;
-  this.y = this.y + this.speedY/FPS;
-}
+  if(isCollided(enemyPath[this.pathDes].x,enemyPath[this.pathDes].y,this.x,this.y,64/FPS,64/FPS) == true){
+    this.x = enemyPath[this.pathDes].x;
+    this.y = enemyPath[this.pathDes].y;
+    pathDes++;
+    if (this.x == enemyPath[pathDes].x && this.y < enemyPath[pathDes].y){
+      speedX = 0;
+      speedY = 64;
+    }else if(this.x == enemyPath[pathDes].x && this.y > enemyPath[pathDes].y){
+      speedX = 0;
+      speedY = -64;
+    }else if(this.x < enemyPath[pathDes].x && this.y == enemyPath[pathDes].y){
+      speedX = 64;
+      speedY = 0;
+    }else if(this.x > enemyPath[pathDes].x && this.y == enemyPath[pathDes].y){
+      speedX = -64; 
+      speedY = 0;
+  }else{
+    this.x = this.x + this.speedX/FPS;
+    this.y = this.y + this.speedY/FPS;
+  }  
 };
 
-
-
+function isCollided(pointX,pointY,targetX,targetY,targetWidth,targetHeight){
+  if(pointX >= targetX
+     && pointX <= targetX+targetWidth
+     && pointY >= targetY
+     && pointY <= targetY+targetHeight){
+    return true;
+  }else{
+    return false;
+  }  
+}
 
 var towbtnImg = document.createElement("img");
 towbtnImg.src = "images/tower-btn.png";
@@ -50,6 +85,7 @@ $("canvas").on("click",function(event){
   }
   
 })
+
 function draw(){
 ctx.drawImage(bgImg,0,0);
 ctx.drawImage(enemyImg,enemy.x,enemy.y);
