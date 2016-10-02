@@ -96,5 +96,6 @@ ctx.drawImage(towImg,tower.x,tower.y);
   }
 enemy.move();
 }
-
+    
+    
 setInterval(draw,1000/FPS);
