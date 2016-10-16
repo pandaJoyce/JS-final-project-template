@@ -98,3 +98,4 @@ enemy.move();
 }
     
 setInterval(draw,1000/FPS);
+console.log("qq");
