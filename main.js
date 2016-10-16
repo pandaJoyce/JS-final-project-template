@@ -40,10 +40,12 @@ var enemy = {
     }else if(this.x > enemyPath[pathDes].x && this.y == enemyPath[pathDes].y){
       speedX = -64; 
       speedY = 0;
-  }else{
-    this.x = this.x + this.speedX/FPS;
-    this.y = this.y + this.speedY/FPS;
-  }  
+    }else{
+      this.x = this.x + this.speedX/FPS;
+      this.y = this.y + this.speedY/FPS;
+    }
+  }
+  }
 };
 
 function isCollided(pointX,pointY,targetX,targetY,targetWidth,targetHeight){
@@ -98,5 +100,3 @@ enemy.move();
 }
     
 setInterval(draw,1000/FPS);
-console.log("qq");
-       
