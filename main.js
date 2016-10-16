@@ -16,6 +16,7 @@ var enemyPath = [
   {x: 224, y: 192},
   {x: 224, y: 320},
   {x: 544, y: 320},
+  {x: 544, y: 96},
 ];
 function Enemy(){
   this.x = 96,
