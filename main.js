@@ -17,14 +17,13 @@ var enemyPath = [
   {x: 224, y: 320},
   {x: 544, y: 320},
 ];
-var enemy = {
-  x:96,
-  y:400,
-  v:[1,1],
-  pathDes:0,
-  speedX:0,
-  speedY:-64,
-  move: function(){
+function Enemy(){
+  this.x = 96,
+  this.y = 480-32,
+  this.speedX =0,
+  this.speedY =-64,
+  this.pathDes =0,
+  this.move = function(){
     if(isCollided(enemyPath[this.pathDes].x, enemyPath[this.pathDes].y, this.x, this.y, 64/fps, 64/fps)) {
       this.x = enemyPath[this.pathDes].x;
       this.y = enemyPath[this.pathDes].y;
@@ -54,8 +53,11 @@ var enemy = {
       this.y += this.speedY/fps;
     }
   }
-};
+  
+}
 
+var enemies = [];
+var clock = 0;
 var cursor = {x: 0, y: 0};
 var isBuilding = false;
 
@@ -68,9 +70,16 @@ function isCollided(pointX, pointY, targetX, targetY, targetWidth, targetHeight)
 }
 
 function draw(){
-  enemy.move();
+  for(var i = 0;i<enemies.length;i++){
+    enemies[i].move();
+    ctx.drawImage(eImg,enemies[i].x,enemies[i].y);
+  }
+  clock++;
+  if(clock%80 == 0){
+    var newEnemy = new Enemy();
+    enemies.push(newEnemy);
+  }
   ctx.drawImage(bgImg,0,0);
-  ctx.drawImage(eImg,enemy.x,enemy.y);
   ctx.drawImage(tImg,640-64,480-64,64,64);
   ctx.drawImage(towerImg, tower.x, tower.y);
   if(isBuilding == true) {
@@ -122,4 +131,3 @@ $("#game-canvas").on("click", function() {
     }
   }
 })
-
