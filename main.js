@@ -63,24 +63,7 @@ function Enemy(){
 
 var enemies = [];
 var clock = 0;
-var cursor = {
-  x: 0, 
-  y: 0,
-  range:96,
-  aimingEnemyId:null,
-  searchEnemy:function(){
-    for(var i = 0;i<enemies.lrngth;i++){
-      var distance = Math.sqrt(
-        Math.pow(this.x-enemies[i].x,2)+Math.pow(this.y-enemies[i].y,2)
-      );
-      if(distance<=this.range){
-        this.aimingEnemyId = i;
-        return;
-      }
-    }
-    this.aimingEnemyId = null;
-  }  
-};
+var cursor = {x:0,y:0};
 var isBuilding = false;
 
 function isCollided(pointX, pointY, targetX, targetY, targetWidth, targetHeight){
@@ -118,9 +101,9 @@ function draw(){
       enemies[i].move();
       ctx.drawImage(eImg,enemies[i].x,enemies[i].y);
     }
-  cursor.searchEnemy();
-  if(cursor.aimingEnemyId!=null){
-    var id = cursor.aimingEnemyId;
+  tower.searchEnemy();
+  if(tower.aimingEnemyId!=null){
+    var id = tower.aimingEnemyId;
     ctx.drawImage(crosshairImg,enemies[id].x,enemies[id].y);
   }
   }
@@ -152,7 +135,24 @@ $("#game-canvas").on("mousemove", function(event) {
   cursor.y = event.offsetY - (event.offsetY%32);
 });
 
-var tower = {x:0, y:0};
+var tower = {
+  x:0, 
+  y:0,
+  range:96,
+  aimingEnemyId:null,
+  searchEnemy:function(){
+    for(var i = 0;i<enemies.length;i++){
+      var distance = Math.sqrt(
+        Math.pow(this.x-enemies[i].x,2)+Math.pow(this.y-enemies[i].y,2)
+      );
+      if(distance<=this.range){
+        this.aimingEnemyId = i;
+        return;
+      }
+    }
+    this.aimingEnemyId = null;
+  }
+};
 $("#game-canvas").on("click", function() {
   if(cursor.x >= 640-64 && cursor.y >= 480-64) {
     if(isBuilding == false) {
