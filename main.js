@@ -9,6 +9,7 @@ towerImg.src = "images/tower.png";
 var canvas = document.getElementById("game-canvas");
 var ctx = canvas.getContext("2d");
 var fps = 60;
+var hp = 100;
 var enemyPath = [
   {x: 96, y: 64},
   {x: 384, y: 64},
@@ -84,7 +85,7 @@ function draw(){
   ctx.drawImage(towerImg, tower.x, tower.y);
   ctx.font = "24px Arial";
   ctx.fillStyle = "white";
-  ctx.fillText = ("HP",10,10);
+  ctx.fillText = ("HP:"+hp,10,10);
   
   if(isBuilding == true) {
     ctx.drawImage(towerImg, cursor.x, cursor.y);  
