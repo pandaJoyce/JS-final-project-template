@@ -61,7 +61,24 @@ function Enemy(){
 
 var enemies = [];
 var clock = 0;
-var cursor = {x: 0, y: 0};
+var cursor = {
+  x: 0, 
+  y: 0,
+  range:96,
+  aimingEnemyId:null,
+  searchEnemy:function(){
+    for(var i = 0;i<enemies.lrngth;i++){
+      var distance = Math.sqrt(
+        Math.pow(this.x-enemies[i].x,2)+Math.pow(this.y-enemies[i].y,2)
+      );
+      if(distance<=this.range){
+        this.aimingEnemyId = i;
+        return;
+      }
+    }
+    this.aimingEnemyId = null;
+  }  
+};
 var isBuilding = false;
 
 function isCollided(pointX, pointY, targetX, targetY, targetWidth, targetHeight){
