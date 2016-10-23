@@ -79,12 +79,12 @@ function draw(){
     enemies.push(newEnemy);
   }
   
-  ctx.drawImage(bgImg,0,0);
-  ctx.drawImage(tImg,640-64,480-64,64,64);
-  ctx.drawImage(towerImg, tower.x, tower.y);
   ctx.font = "24px Arial";
   ctx.fillStyle = "white";
   ctx.fillText = ("HP",10,10);
+  ctx.drawImage(bgImg,0,0);
+  ctx.drawImage(tImg,640-64,480-64,64,64);
+  ctx.drawImage(towerImg, tower.x, tower.y);
   
   if(isBuilding == true) {
     ctx.drawImage(towerImg, cursor.x, cursor.y);  
