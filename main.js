@@ -1,3 +1,5 @@
+var crosshairImg = document.createElement("img");
+crosshairImg.src = "images/crosshair.png";
 var bgImg = document.createElement("img");
 bgImg.src = "images/map.png";
 var eImg = document.createElement("img");
@@ -105,6 +107,11 @@ function draw(){
   ctx.fillStyle = "white";
   ctx.fillText("HP:"+hp,10,30);
   
+  tower.searchEnemy();
+  if(tower.aimingEnemyId!=null){
+    var id = tower.aimingEnemyId;
+    ctx.drawImage(crosshairImg,enemies[id].x,enemies[id].y);
+  }
   if(isBuilding == true) {
     ctx.drawImage(towerImg, cursor.x, cursor.y);  
   }
