@@ -107,11 +107,6 @@ function draw(){
   ctx.fillStyle = "white";
   ctx.fillText("HP:"+hp,10,30);
   
-  cursor.searchEnemy();
-  if(cursor.aimingEnemyId!=null){
-    var id = cursor.aimingEnemyId;
-    ctx.drawImage(crosshairImg,enemies[id].x,enemies[id].y);
-  }
   if(isBuilding == true) {
     ctx.drawImage(towerImg, cursor.x, cursor.y);  
   }
@@ -122,7 +117,12 @@ function draw(){
     }else{
       enemies[i].move();
       ctx.drawImage(eImg,enemies[i].x,enemies[i].y);
-    }  
+    }
+  cursor.searchEnemy();
+  if(cursor.aimingEnemyId!=null){
+    var id = cursor.aimingEnemyId;
+    ctx.drawImage(crosshairImg,enemies[id].x,enemies[id].y);
+  }
   }
 }
 setInterval(draw,1000/fps);
