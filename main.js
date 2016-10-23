@@ -20,6 +20,7 @@ var enemyPath = [
   {x: 544, y: 96},
 ];
 function Enemy(){
+  this.hp = 10,
   this.x = 96,
   this.y = 480-32,
   this.speedX =0,
@@ -92,8 +93,12 @@ function draw(){
   }
   
   for(var i = 0;i<enemies.length;i++){
-    enemies[i].move();
-    ctx.drawImage(eImg,enemies[i].x,enemies[i].y);
+    if (enemies[i].hp < 1){
+      enemies.splice(i,1);
+    }else{
+      enemies[i].move();
+      ctx.drawImage(eImg,enemies[i].x,enemies[i].y);
+    }  
   }
 }
 setInterval(draw,1000/fps);
