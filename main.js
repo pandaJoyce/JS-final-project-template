@@ -85,7 +85,7 @@ function draw(){
   ctx.drawImage(towerImg, tower.x, tower.y);
   ctx.font = "24px Arial";
   ctx.fillStyle = "white";
-  ctx.fillText = ("HP:"+hp,10,10);
+  ctx.fillText = ("HP:"+hp,10,30);
   
   if(isBuilding == true) {
     ctx.drawImage(towerImg, cursor.x, cursor.y);  
