@@ -111,8 +111,8 @@ var tower = {
         }
         return;
       }
+      this.aimingEnemyId = null;
     }
-    this.aimingEnemyId = null;
   }
 };
 $("#game-canvas").on("click", function() {
