@@ -12,6 +12,8 @@ var canvas = document.getElementById("game-canvas");
 var ctx = canvas.getContext("2d");
 var fps = 60;
 var hp = 100;
+var score = 0;
+var money = 0; 
 var enemyPath = [
   {x: 96, y: 64},
   {x: 384, y: 64},
@@ -147,6 +149,12 @@ function draw(){
   ctx.font = "24px Arial";
   ctx.fillStyle = "white";
   ctx.fillText("HP:"+hp,10,30);
+  ctx.font = "24px Arial";
+  ctx.fillStyle = "white";
+  ctx.fillText("SCORE:"+score,10,50);
+  ctx.font = "24px Arial";
+  ctx.fillStyle = "white";
+  ctx.fillText("MONEY:"+money,10,70);
   
   if(isBuilding == true) {
     ctx.drawImage(towerImg, cursor.x, cursor.y);  
@@ -155,6 +163,8 @@ function draw(){
   for(var i = 0;i<enemies.length;i++){
     if (enemies[i].hp < 1){
       enemies.splice(i,1);
+      score = socre+30;
+      money = money+20;
     }else{
       enemies[i].move();
       ctx.drawImage(eImg,enemies[i].x,enemies[i].y);
