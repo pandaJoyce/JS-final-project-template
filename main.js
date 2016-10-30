@@ -163,7 +163,7 @@ function draw(){
   for(var i = 0;i<enemies.length;i++){
     if (enemies[i].hp < 1){
       enemies.splice(i,1);
-      score = socre+30;
+      score = score+30;
       money = money+20;
     }else{
       enemies[i].move();
