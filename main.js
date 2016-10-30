@@ -107,7 +107,7 @@ function draw(){
     ctx.drawImage(crosshairImg,enemies[id].x,enemies[id].y);
   }
   }
-  tower.shoot;
+  tower.shoot();
 }
 setInterval(draw,1000/fps);
 
