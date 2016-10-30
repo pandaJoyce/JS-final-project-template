@@ -92,7 +92,7 @@ var tower = {
     ctx.strokeStyle = "red";
     ctx.lineWidth = 3;
     ctx.stroke();
-    enemies[id].hp - this.damage;
+    enemies[id].hp -= this.damage;
   },
   damage:2,
   fireRate:2,
