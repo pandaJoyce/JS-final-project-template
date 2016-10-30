@@ -24,12 +24,12 @@ var enemyPath = [
   {x: 544, y: 96},
 ];
 function Enemy(){
-  this.hp = 10,
-  this.x = 96,
-  this.y = 480-32,
-  this.speedX =0,
-  this.speedY =-64,
-  this.pathDes =0,
+  this.hp = 10;
+  this.x = 96;
+  this.y = 480-32;
+  this.speedX =0;
+  this.speedY =-64;
+  this.pathDes =0;
   this.move = function(){
     if(isCollided(enemyPath[this.pathDes].x, enemyPath[this.pathDes].y, this.x, this.y, 64/fps, 64/fps)) {
       this.x = enemyPath[this.pathDes].x;
@@ -82,12 +82,12 @@ $("#game-canvas").on("mousemove", function(event) {
   cursor.y = event.offsetY - (event.offsetY%32);
 });
 
-var tower = {
-  x:0, 
-  y:0,
-  range:96,
-  aimingEnemyId:null,
-  shoot:function(id){
+function tower(){
+  this.x = 0;
+  this.y = 0;
+  this.range = 96;
+  this.aimingEnemyId = null;
+  this.shoot = function(id){
     ctx.beginPath();
     ctx.moveTo(this.x,this.y);
     ctx.lineTo(enemies[id].x,enemies[id].y);
@@ -95,11 +95,11 @@ var tower = {
     ctx.lineWidth = 3;
     ctx.stroke();
     enemies[id].hp -= this.damage;
-  },
-  damage:2,
-  fireRate:2,
-  readyToShootTime:2,
-  searchEnemy:function(){
+  };
+  this.damage = 2;
+  this.fireRate = 2;
+  this.readyToShootTime = 2;
+  this.searchEnemy = function(){
     this.readyToShootTime -= 1/fps;
     for(var i = 0;i<enemies.length;i++){
       var distance = Math.sqrt(
@@ -117,6 +117,9 @@ var tower = {
     }
   }
 };
+
+var towers = [];
+
 $("#game-canvas").on("click", function() {
   if(cursor.x >= 640-64 && cursor.y >= 480-64) {
     if(isBuilding == false) {
@@ -128,7 +131,8 @@ $("#game-canvas").on("click", function() {
     if(isBuilding == true) {
       tower.x = cursor.x;
       tower.y = cursor.y;
-      
+      var newTower = new tower();
+      towers.push(newTower);
       isBuilding = false;
     }
   }
@@ -143,17 +147,14 @@ function draw(){
     enemies.push(newEnemy);
   }
   
+  
   ctx.drawImage(bgImg,0,0);
   ctx.drawImage(tImg,640-64,480-64,64,64);
   ctx.drawImage(towerImg, tower.x, tower.y);
   ctx.font = "24px Arial";
   ctx.fillStyle = "white";
   ctx.fillText("HP:"+hp,10,30);
-  ctx.font = "24px Arial";
-  ctx.fillStyle = "white";
   ctx.fillText("SCORE:"+score,10,50);
-  ctx.font = "24px Arial";
-  ctx.fillStyle = "white";
   ctx.fillText("MONEY:"+money,10,70);
   
   if(isBuilding == true) {
