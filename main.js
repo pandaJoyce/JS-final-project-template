@@ -134,7 +134,7 @@ var tower = {
   fireRate:2,
   readyToShootTime:2,
   searchEnemy:function(){
-    this.readyToShootTime -= 1/FPS
+    this.readyToShootTime -= 1/fps
     for(var i = 0;i<enemies.length;i++){
       var distance = Math.sqrt(
         Math.pow(this.x-enemies[i].x,2)+Math.pow(this.y-enemies[i].y,2)
