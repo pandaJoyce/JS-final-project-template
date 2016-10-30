@@ -170,9 +170,9 @@ function draw(){
       enemies[i].move();
       ctx.drawImage(eImg,enemies[i].x,enemies[i].y);
     }
-  tower.searchEnemy();
-  if(tower.aimingEnemyId!=null){
-    var id = tower.aimingEnemyId;
+  tower().searchEnemy();
+  if(tower().aimingEnemyId!=null){
+    var id = tower().aimingEnemyId;
     ctx.drawImage(crosshairImg,enemies[id].x,enemies[id].y);
   }
   }
