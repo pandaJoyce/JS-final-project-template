@@ -74,42 +74,6 @@ function isCollided(pointX, pointY, targetX, targetY, targetWidth, targetHeight)
   }
 }
 
-function draw(){
-  
-  clock++;
-  
-  if(clock%80 == 0){
-    var newEnemy = new Enemy();
-    enemies.push(newEnemy);
-  }
-  
-  ctx.drawImage(bgImg,0,0);
-  ctx.drawImage(tImg,640-64,480-64,64,64);
-  ctx.drawImage(towerImg, tower.x, tower.y);
-  ctx.font = "24px Arial";
-  ctx.fillStyle = "white";
-  ctx.fillText("HP:"+hp,10,30);
-  
-  if(isBuilding == true) {
-    ctx.drawImage(towerImg, cursor.x, cursor.y);  
-  }
-  
-  for(var i = 0;i<enemies.length;i++){
-    if (enemies[i].hp < 1){
-      enemies.splice(i,1);
-    }else{
-      enemies[i].move();
-      ctx.drawImage(eImg,enemies[i].x,enemies[i].y);
-    }
-  tower.searchEnemy();
-  if(tower.aimingEnemyId!=null){
-    var id = tower.aimingEnemyId;
-    ctx.drawImage(crosshairImg,enemies[id].x,enemies[id].y);
-  }
-  }
-  tower.shoot();
-}
-setInterval(draw,1000/fps);
 
 $("#game-canvas").on("mousemove", function(event) {
   cursor.x = event.offsetX - (event.offsetX%32);
@@ -167,3 +131,40 @@ $("#game-canvas").on("click", function() {
     }
   }
 })
+
+function draw(){
+  
+  clock++;
+  
+  if(clock%80 == 0){
+    var newEnemy = new Enemy();
+    enemies.push(newEnemy);
+  }
+  
+  ctx.drawImage(bgImg,0,0);
+  ctx.drawImage(tImg,640-64,480-64,64,64);
+  ctx.drawImage(towerImg, tower.x, tower.y);
+  ctx.font = "24px Arial";
+  ctx.fillStyle = "white";
+  ctx.fillText("HP:"+hp,10,30);
+  
+  if(isBuilding == true) {
+    ctx.drawImage(towerImg, cursor.x, cursor.y);  
+  }
+  
+  for(var i = 0;i<enemies.length;i++){
+    if (enemies[i].hp < 1){
+      enemies.splice(i,1);
+    }else{
+      enemies[i].move();
+      ctx.drawImage(eImg,enemies[i].x,enemies[i].y);
+    }
+  tower.searchEnemy();
+  if(tower.aimingEnemyId!=null){
+    var id = tower.aimingEnemyId;
+    ctx.drawImage(crosshairImg,enemies[id].x,enemies[id].y);
+  }
+  }
+  tower.shoot();
+}
+setInterval(draw,1000/fps);
