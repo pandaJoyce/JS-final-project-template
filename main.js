@@ -107,28 +107,9 @@ function draw(){
     ctx.drawImage(crosshairImg,enemies[id].x,enemies[id].y);
   }
   }
+  tower.shoot;
 }
 setInterval(draw,1000/fps);
-$("body").on("keypress",key);
-function key(event){
-  console.log(event.which)
-  if(event.which === 119){
-    enemy.y -= enemy.v[1]
-    enemy.v[1] *= 1.1
-  }
-  if(event.which === 115){
-    enemy.y += enemy.v[1]
-    enemy.v[1] *= 1.1
-  }
-  if(event.which === 100){
-    enemy.x += enemy.v[0]
-    enemy.v[0] *= 1.1
-  }
-  if(event.which === 97){
-    enemy.x -= enemy.v[0]
-    enemy.v[0] *= 1.1
-  }
-}
 
 $("#game-canvas").on("mousemove", function(event) {
   cursor.x = event.offsetX - (event.offsetX%32);
@@ -140,13 +121,30 @@ var tower = {
   y:0,
   range:96,
   aimingEnemyId:null,
+  shoot:function(){
+    ctx.beginPath();
+    ctx.moveTo(this.x,this.y);
+    ctx.lineTo(enemies[id].x,enemies[id].y);
+    ctx.strokeStyle = "red";
+    ctx.lineWidth = 3;
+    ctx.stroke();
+    enemies[id].hp - this.damage;
+  },
+  damage:2,
+  fireRate:2,
+  readyToShootTime:2,
   searchEnemy:function(){
+    this.readyToShootTime -= 1/FPS
     for(var i = 0;i<enemies.length;i++){
       var distance = Math.sqrt(
         Math.pow(this.x-enemies[i].x,2)+Math.pow(this.y-enemies[i].y,2)
       );
       if(distance<=this.range){
         this.aimingEnemyId = i;
+        if(readyToShootTime<=0){
+          this.shoot();
+          this.readyToShootTime = this.fireRate;
+        }
         return;
       }
     }
