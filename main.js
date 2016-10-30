@@ -121,7 +121,7 @@ var tower = {
   y:0,
   range:96,
   aimingEnemyId:null,
-  shoot:function(){
+  shoot:function(id){
     ctx.beginPath();
     ctx.moveTo(this.x,this.y);
     ctx.lineTo(enemies[id].x,enemies[id].y);
@@ -134,7 +134,7 @@ var tower = {
   fireRate:2,
   readyToShootTime:2,
   searchEnemy:function(){
-    this.readyToShootTime -= 1/fps
+    this.readyToShootTime -= 1/fps;
     for(var i = 0;i<enemies.length;i++){
       var distance = Math.sqrt(
         Math.pow(this.x-enemies[i].x,2)+Math.pow(this.y-enemies[i].y,2)
@@ -142,7 +142,7 @@ var tower = {
       if(distance<=this.range){
         this.aimingEnemyId = i;
         if(readyToShootTime<=0){
-          this.shoot();
+          this.shoot(this.aimingEnemyId);
           this.readyToShootTime = this.fireRate;
         }
         return;
